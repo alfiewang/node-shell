@@ -1,13 +1,32 @@
 const fs = require("fs");
 
-module.exports = () => {
+
+
+// const done = require('./bash')
+// console.log(done);
+// module.exports = () => {
+//   // `files` will be an array of filenames, like ['bash.js', 'pwd.js']
+//   fs.readdir("./", "utf8", (err, files) => {
+//     if (err) {
+//       throw err;
+//     } else {
+//       process.stdout.write(files.join("\n"));
+//       process.stdout.write("prompt >");
+//     }
+//   });
+// };
+
+const ls = (done) => {
   // `files` will be an array of filenames, like ['bash.js', 'pwd.js']
   fs.readdir("./", "utf8", (err, files) => {
     if (err) {
-      throw err;
+      done('Something went wrong!')
     } else {
-      process.stdout.write(files.join("\n"));
-      process.stdout.write("prompt >");
+      done(files.join('\n'))
     }
   });
 };
+
+
+
+module.exports = ls;
